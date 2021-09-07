@@ -10,6 +10,6 @@ def index(request):
 class IndexView(generic.TemplateView):
     template_name="diary/index.html"
 
-class InquiryView(generic.TemplateView):
+class InquiryView(generic.FormView):
     template_name = "diary/inquiry.html"
     form_class = InquiryForm
