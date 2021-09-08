@@ -9,3 +9,5 @@ class InquiryForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+        self.fields['name'].widget.attrs['class'] = 'form-control col-9'
+        
