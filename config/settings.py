@@ -132,3 +132,17 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'alert alert-success',
     messages.INFO: 'alert alert-info',
 }
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    'diary.apps.DiaryConfig',
+    'accounts.apps.AccountsConfig',
+]
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
