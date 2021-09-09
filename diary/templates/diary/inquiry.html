@@ -1,12 +1,13 @@
 {% extends 'diary/base.html' %}
-{% load static %}
 
 {% block title %}お問い合わせ ¦ Private Diary{% endblock %}
 
+{% block active_inquery %}active{% endblock %}
+
 {% block contents %}
-        <section id="container">
-            <div class="row">
-                <div class="my-div-style">
+        <div id="scroll">
+            <div class="container px-5">
+                <div class="my-div-style gx-5 align-items-center">
                     <form method="POST">
                         {% csrf_token %}
         
@@ -30,5 +31,6 @@
                     </form>
                 </div>
             </div>
-        </section>
+        </div>
 {% endblock %}
+
