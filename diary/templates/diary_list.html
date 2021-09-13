@@ -17,11 +17,39 @@
                         <h2 class="post-title">{{ diary.title }}</h2>
                         <h3 class="post-subtitle">{{ diary.content|truncatechars:20 }}</h3>
                     </a>
+                    <p class="post-meta">{{ diary.created_at }}</p>
                 </div>
                 <hr>
                 {% empty %}
                 <p>日記がありません。</p>
                 {% endfor %}
+
+                <!-- ページネーション処理 -->
+                {% if is_paginated %}
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% for page_num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == page_num %}
+                        <li class="page-item active"><a class="page-link" href="#">{{ page_num }}</a></li>
+                        {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page=list" href="?page={{ page_obj.next_page_number }}">
+                            <span aria-hidden="true">&raquo</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+                {% endif %}
             </div>
         </div>
     </div>
