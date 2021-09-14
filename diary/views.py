@@ -1,3 +1,4 @@
+from django.contrib.messages.api import success
 from django.db import models
 from django.shortcuts import render
 import logging
@@ -40,3 +41,14 @@ class DiaryListView(LoginRequiredMixin, generic.ListView):
 class DiaryDetailView(LoginRequiredMixin, generic.DetailView):
     model = Diary
     template_name = 'diary/diary_detail.html'
+
+from .forms import InquiryForm, DiaryCreateForm
+class DiaryCreateView(LoginRequiredMixin, generic.DetailView):
+    model = Diary
+    template_name = 'diary/diary_create.html'
+    form_class = DiaryCreateForm
+    success_url = reverse_lazy('diary:diary_list')
+
+    def form_valid(self, form):
+        diary = form.save(commit=False)
+        
